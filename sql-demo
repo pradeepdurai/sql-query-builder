@@ -1,0 +1,50 @@
+SELECT `specialities`.`speciality_id`, `specialities`.`name`, `specialities`.`slug`
+FROM `specialities`
+JOIN `specialities_doctors` ON `specialities_doctors`.`speciality_id` = `specialities`.`speciality_id`
+JOIN `specialities_hospitals` ON `specialities_hospitals`.`speciality_id` = `specialities`.`speciality_id`
+JOIN `hospitals` ON `hospitals`.`hospital_id` = `specialities_hospitals`.`hospital_id`
+JOIN `doctors_indian_hospitals` ON `doctors_indian_hospitals`.`doctor_id` = `specialities_doctors`.`doctor_id`
+JOIN `speciality_indian_hospitals` ON `speciality_indian_hospitals`.`speciality_id` = `specialities`.`speciality_id`
+JOIN `indian_hospitals` ON `indian_hospitals`.`hospital_id` = `speciality_indian_hospitals`.`indian_hospital_id`
+JOIN `doctors_hospitals` ON `doctors_hospitals`.`doctor_id` = `specialities_doctors`.`doctor_id`
+WHERE `doctors_indian_hospitals`.`indian_hospital_id` = `speciality_indian_hospitals`.`indian_hospital_id`
+AND `specialities_hospitals`.`hospital_id` = '1'
+AND `doctors_hospitals`.`hospital_id` = '1'
+AND `specialities_doctors`.`doctor_id` IN ('71','317','303','911','894','1273','1278','628','652','3','284','370','338','1031','323','318','1285','10','387','286','790','13','263','788','339','36','26','392','279','62','112','357','802','147','341','41','343','153','168','626','649','38','258','160','157','159','205','488','639','15','213','365','161','4','356','44','429','166','648','170','18','17','46','115','49','47','305','372','344','320','322','32','346','643','1248','176','21','121','280','328','19','221','34','630','281','76','653','348','132','380','98','900','11','78','627','645','27','238','245','58','203','664','337','753','316','351','332','1277','144','222','29','264','156','374','56','636','20','634','345','973','642','757','251','1538','63','1276','74','148','254','1296','336','363','223','287','315','352','51','298','640','154','55','59','270','35','347','24','1002','314','256','31','308','22')
+AND `doctors_hospitals`.`doctor_id` IN ('71','317','303','911','894','1273','1278','628','652','3','284','370','338','1031','323','318','1285','10','387','286','790','13','263','788','339','36','26','392','279','62','112','357','802','147','341','41','343','153','168','626','649','38','258','160','157','159','205','488','639','15','213','365','161','4','356','44','429','166','648','170','18','17','46','115','49','47','305','372','344','320','322','32','346','643','1248','176','21','121','280','328','19','221','34','630','281','76','653','348','132','380','98','900','11','78','627','645','27','238','245','58','203','664','337','753','316','351','332','1277','144','222','29','264','156','374','56','636','20','634','345','973','642','757','251','1538','63','1276','74','148','254','1296','336','363','223','287','315','352','51','298','640','154','55','59','270','35','347','24','1002','314','256','31','308','22')
+AND `hospitals`.`status_ind` = 1
+AND `doctors_hospitals`.`status_ind` = 1
+AND `specialities`.`status_ind` = 1
+GROUP BY `specialities`.`speciality_id`
+ORDER BY `specialities`.`name` ASC
+
+SELECT `specialities`.`speciality_id,specialities`.`name,specialities`.`slug` 
+FROM `specialities` 
+JOIN `specialities_doctors` ON `specialities_doctors`.`speciality_id = specialities`.`speciality_id` 
+JOIN `specialities_hospitals` ON `specialities_hospitals`.`speciality_id = specialities`.`speciality_id` 
+JOIN `hospitals` ON `hospitals`.`hospital_id = specialities_hospitals`.`hospital_id`
+JOIN `doctors_indian_hospitals` ON `doctors_indian_hospitals`.`doctor_id = specialities_doctors`.`doctor_id`
+JOIN `speciality_indian_hospitals` ON `speciality_indian_hospitals`.`speciality_id = specialities`.`speciality_id`
+JOIN `indian_hospitals` ON `indian_hospitals`.`hospital_id = speciality_indian_hospitals`.`indian_hospital_id` 
+JOIN `doctors_hospitals` ON `doctors_hospitals`.`doctor_id = specialities_doctors`.`doctor_id` 
+WHERE doctors_indian_hospitals.indian_hospital_id = speciality_indian_hospitals.indian_hospital_id AND  specialities_hospitals.hospital_id = 1 AND  doctors_hospitals.hospital_id = 1 AND  hospitals.status_ind = 1 AND  doctors_hospitals.status_ind = 1 AND  specialities.status_ind 1 undefined AND specialities_doctors.doctor_id IN (1,2,3,4,5,6) AND doctors_hospitals.doctor_id IN (12,23,14,54) GROUP BY specialities.speciality_id
+
+
+SELECT specialities.speciality_id,specialities.name,specialities.slug 
+FROM specialities  
+JOIN specialities_doctors ON specialities_doctors.speciality_id = specialities.speciality_id 
+JOIN specialities_hospitals ON specialities_hospitals.speciality_id = specialities.speciality_id 
+JOIN hospitals ON hospitals.hospital_id = specialities_hospitals.hospital_id 
+JOIN doctors_indian_hospitals ON doctors_indian_hospitals.doctor_id = specialities_doctors.doctor_id 
+JOIN speciality_indian_hospitals ON speciality_indian_hospitals.speciality_id = specialities.speciality_id 
+JOIN indian_hospitals ON indian_hospitals.hospital_id = speciality_indian_hospitals.indian_hospital_id 
+JOIN doctors_hospitals ON doctors_hospitals.doctor_id = specialities_doctors.doctor_id 
+WHERE doctors_indian_hospitals.indian_hospital_id = speciality_indian_hospitals.indian_hospital_id 
+AND  specialities_hospitals.hospital_id = 1 
+AND  doctors_hospitals.hospital_id = 1 
+AND  hospitals.status_ind 1 undefined 
+AND  doctors_hospitals.status_ind 1 undefined 
+AND  specialities.status_ind 1 undefined
+AND specialities_doctors.doctor_id IN (1,2,3,4,5,6)
+AND doctors_hospitals.doctor_id IN (12,23,14,54) 
+GROUP BY specialities.speciality_id
